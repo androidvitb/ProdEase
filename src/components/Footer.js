@@ -1,11 +1,12 @@
 "use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faSquareXTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
   const isRegister = pathname && pathname.startsWith("/register"); 
   const isLogin = pathname && pathname.startsWith("/login");
+  const currentYear = new Date().getFullYear();
   return (
     <footer className={`py-10 bg-[#0e1e1b] text-white  ${isLogin || isRegister?"hidden":"block"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -45,7 +46,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faFacebook} className="w-6 h-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                <FontAwesomeIcon icon={faTwitter} className="w-6 h-6" />
+                <FontAwesomeIcon icon={faSquareXTwitter} className="w-6 h-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition duration-300">
                 <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
@@ -58,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
-          &copy; 2024 ProdEase. All rights reserved.
+          &copy; {currentYear} ProdEase. All rights reserved.
         </div>
       </div>
     </footer>
