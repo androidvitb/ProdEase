@@ -6,6 +6,7 @@ export default function Footer() {
   const pathname = usePathname();
   const isRegister = pathname && pathname.startsWith("/register"); 
   const isLogin = pathname && pathname.startsWith("/login");
+  const currentYear= new Date().getFullYear();
   return (
     <footer className={`py-10 bg-[#0e1e1b] text-white  ${isLogin || isRegister?"hidden":"block"}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -58,7 +59,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-10 border-t border-gray-700 pt-6 text-center text-gray-500">
-          &copy; 2024 ProdEase. All rights reserved.
+          &copy; {currentYear} ProdEase. All rights reserved.
         </div>
       </div>
     </footer>
