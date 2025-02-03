@@ -1,6 +1,6 @@
 "use client"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faFacebook, faTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faFacebook, faSquareXTwitter, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { usePathname } from "next/navigation";
 export default function Footer() {
   const pathname = usePathname();
@@ -46,7 +46,7 @@ export default function Footer() {
                 <FontAwesomeIcon icon={faFacebook} className="w-6 h-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition duration-300">
-                <FontAwesomeIcon icon={faTwitter} className="w-6 h-6" />
+                <FontAwesomeIcon icon={faSquareXTwitter} className="w-6 h-6" />
               </a>
               <a href="#" className="text-gray-400 hover:text-white transition duration-300">
                 <FontAwesomeIcon icon={faInstagram} className="w-6 h-6" />
