@@ -172,7 +172,7 @@ export default function Home() {
           <div className="flex-grow border-t border-gray-300"></div>
         </div>
         {/* About ProdEase Section */}
-        <section className="py-16 bg-white">
+        <section id="about" className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
             <h2 className="text-4xl font-extrabold text-gray-900 mb-8">
               About <span className="text-[#4cae9e]">ProdEase</span>
@@ -236,7 +236,7 @@ export default function Home() {
           </div>
         </div>
 
-        <section className="bg-white" id="contact">
+        <section  id="contactus" className="bg-white">
           <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
             <div className="mb-4">
               <div className="mb-6 max-w-3xl text-center sm:text-center md:mx-auto md:mb-12">

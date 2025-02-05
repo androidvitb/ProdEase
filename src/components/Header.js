@@ -94,14 +94,14 @@ export default function Header() {
             </Link>
           ) : (
             <Link
-              href="/about"
+              href="/#about"
               className="text-gray-800 hover:text-[#4cae9e] transition duration-300"
             >
               About
             </Link>
           )}
           <Link
-            href="/"
+            href="/#contactus"
             className="text-gray-800 hover:text-[#4cae9e] transition duration-300"
           >
             Contact
