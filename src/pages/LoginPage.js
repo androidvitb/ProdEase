@@ -3,11 +3,13 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
+import { Eye, EyeOff } from 'lucide-react';
 
 function LoginPage() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showPassword, setShowPassword] = useState(false); 
   const router = useRouter();
 
   const handleLogin = async (e) => {
@@ -69,14 +71,26 @@ function LoginPage() {
                       onChange={(e) => setEmail(e.target.value)}
                       required
                     />
-                    <input
-                      className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white mt-5"
-                      type="password"
-                      placeholder="Password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                    />
+                    <div className="relative mt-5">
+                      <input
+                        className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
+                        type={showPassword ? 'text' : 'password'} // Toggle between text and password
+                        placeholder="Password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                      />
+                      <div
+                        className="absolute inset-y-0 right-0 pr-3 flex items-center cursor-pointer"
+                        onClick={() => setShowPassword(prev => !prev)} // Toggle password visibility
+                      >
+                        {showPassword ? (
+                          <EyeOff className="h-5 w-5 text-gray-400" />
+                        ) : (
+                          <Eye className="h-5 w-5 text-gray-400" />
+                        )}
+                      </div>
+                    </div>
                     <button
                       type="submit"
                       className="mt-5 tracking-wide font-semibold bg-[#4cae9e] text-white-500 w-full py-4 rounded-lg hover:bg-[#256359] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none"
@@ -108,15 +122,15 @@ function LoginPage() {
                     </a>
                     .
                   </p>
-                <p className="mt-4 text-sm text-gray-600 text-center">
-                  Don&lsquo;t have an account?{" "}
-                  <Link
-                    href="/register"
-                    className="text-[#4cae9e] hover:text-[#256359] font-semibold"
-                  >
-                    Sign Up
-                  </Link>
-                </p>
+                  <p className="mt-4 text-sm text-gray-600 text-center">
+                    Don&lsquo;t have an account?{" "}
+                    <Link
+                      href="/register"
+                      className="text-[#4cae9e] hover:text-[#256359] font-semibold"
+                    >
+                      Sign Up
+                    </Link>
+                  </p>
                 </div>
               </div>
             </div>
