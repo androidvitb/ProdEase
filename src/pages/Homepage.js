@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -11,7 +11,26 @@ export default function Home() {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState("");
+  const [showScrollTop, setShowScrollTop] = useState(false);
 
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
+  useEffect(() => {
+    const handleScroll = () => {
+      console.log("Scroll position:", window.scrollY);
+      if (window.scrollY > 300) {
+        setShowScrollTop(true);
+      } else {
+        setShowScrollTop(false);
+      }
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
   function scrollToGetStarted(event) {
     event.preventDefault();
     const section = document.getElementById("get-started");
@@ -61,6 +80,7 @@ export default function Home() {
     const { name, value } = event.target;
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   }
+  
   return (
     <div>
       <ToastContainer />
@@ -440,6 +460,16 @@ export default function Home() {
             </div>
           </div>
         </section>
+        <div style={{ height: '2px' }}>
+        </div>
+        {showScrollTop && (
+          <button
+            onClick={scrollToTop}
+            className="fixed bottom-5 right-5 bg-teal-500 text-white p-4 rounded-full shadow-lg hover:bg-teal-600 transition"
+          >
+            ↑
+          </button>
+        )}
       </main>
     </div>
   );
